@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Takeinterviewzpro API')
-    .setDescription('The takeinterviewzpro API description')
+    .setDescription('REST API documentation for takeinterviewzpro app')
     .setVersion('0.1')
     .build();
 
