@@ -14,7 +14,7 @@ async function main() {
       body: 'Support for MongoDB has been one of the most requested features since the initial release of...',
       description:
         "We are excited to share that today's Prisma ORM release adds stable support for MongoDB!",
-      published: false,
+      published: true,
     },
   });
 
