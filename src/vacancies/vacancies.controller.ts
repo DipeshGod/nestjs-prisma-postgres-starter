@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  NotFoundException,
 } from '@nestjs/common';
 import { VacanciesService } from './vacancies.service';
 import { CreateVacancyDto } from './dto/create-vacancy.dto';
@@ -32,7 +33,11 @@ export class VacanciesController {
 
   @Get(':id')
   @ApiOkResponse({ type: VacancyReponse })
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
+    const vacancy = await this.vacanciesService.findOne(id);
+    if (!vacancy) {
+      throw new NotFoundException(`Vacancy with ${id} does not exist.`);
+    }
     return this.vacanciesService.findOne(id);
   }
 
