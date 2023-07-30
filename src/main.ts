@@ -16,6 +16,7 @@ async function bootstrap() {
     .setTitle('Takeinterviewzpro API')
     .setDescription('REST API documentation for takeinterviewzpro app')
     .setVersion('0.1')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
