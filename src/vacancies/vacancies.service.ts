@@ -18,7 +18,10 @@ export class VacanciesService {
   }
 
   findOne(id: string) {
-    return this.prisma.vacancy.findUnique({ where: { id } });
+    return this.prisma.vacancy.findUnique({
+      where: { id },
+      include: { User: true },
+    });
   }
 
   update(id: string, updateVacancyDto: UpdateVacancyDto) {

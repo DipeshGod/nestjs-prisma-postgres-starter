@@ -1,10 +1,30 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // users
+  const user1 = await prisma.user.upsert({
+    where: { email: 'sabin@adams.com' },
+    update: {},
+    create: {
+      email: 'sabin@adams.com',
+      name: 'Sabin Adams',
+      password: 'password-sabin',
+    },
+  });
+
+  const user2 = await prisma.user.upsert({
+    where: { email: 'alex@ruheni.com' },
+    update: {},
+    create: {
+      email: 'alex@ruheni.com',
+      name: 'Alex Ruheni',
+      password: 'password-alex',
+    },
+  });
+
+  //vacancies
   const vancancy1 = await prisma.vacancy.upsert({
     where: { id: '8e9a6c43-75fb-403f-897e-b32e4ee50342' },
     update: {},
@@ -15,6 +35,7 @@ async function main() {
       description:
         "We are excited to share that today's Prisma ORM release adds stable support for MongoDB!",
       published: true,
+      userId: user1.id,
     },
   });
 
@@ -28,6 +49,7 @@ async function main() {
       description:
         "We are excited to share that today's Prisma ORM release adds stable support for MongoDB!",
       published: false,
+      userId: user2.id,
     },
   });
 

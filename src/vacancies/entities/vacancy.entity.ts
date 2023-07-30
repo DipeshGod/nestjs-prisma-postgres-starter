@@ -9,7 +9,7 @@ export class VacancyReponse implements Vacancy {
   title: string;
 
   @ApiProperty()
-  description: string | null;
+  description: string;
 
   @ApiProperty()
   body: string;
@@ -22,4 +22,7 @@ export class VacancyReponse implements Vacancy {
 
   @ApiProperty()
   updatedAt: Date;
+
+  @ApiProperty({ required: false, nullable: true })
+  userId: string | null;
 }
